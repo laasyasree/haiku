@@ -1,0 +1,20 @@
+SubDir HAIKU_TOP src add-ons kernel drivers nvmm ; 
+
+UsePrivateKernelHeaders ;
+SubDirHdrs $(HAIKU_TOP) src system kernel device_manager ;
+SubDirSysHdrs $(HAIKU_TOP) headers compatibility bsd ;
+
+SEARCH_SOURCE += [ FDirName $(SUBDIR) x86 ] ;
+
+
+KernelAddon nvmm :
+	nvmm.c
+	nvmm_x86_svmm.c
+	nvmm_x86_vmx.c
+	nvmm_x86.c
+	nvmm_x86_svmfunc.S
+	nvmm_x86_vmxfunc.S
+	;
+
+
+
