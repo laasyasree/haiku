@@ -159,7 +159,14 @@ TSignatureWindow::MenusBeginning()
 		undoState = focusTextView->UndoState(&isRedo);
 
 	fUndo->SetLabel(isRedo ? kRedoStrings[undoState] : kUndoStrings[undoState]);
-	fUndo->SetEnabled(undoState != B_UNDO_UNAVAILABLE);
+	if(undoState != B_UNDO_UNAVAILABLE){
+		fUndo->SetEnabled(false);
+		undoState = B_UNDO_UNAVAILABLE;
+	}
+	else
+	{
+		fUndo->SetEnabled(true);
+	}
 }
 
 
